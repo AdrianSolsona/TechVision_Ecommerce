@@ -19,8 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  products.init({
-    id: DataTypes.INTEGER,
+  product.init({
     category_id: DataTypes.INTEGER,
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
