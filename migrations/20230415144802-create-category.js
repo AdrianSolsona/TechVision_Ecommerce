@@ -15,9 +15,6 @@ module.exports = {
       highlight: {
         type: Sequelize.STRING
       },
-      subcategory: {
-        type: Sequelize.STRING
-      },
       brand: {
         type: Sequelize.STRING
       },
