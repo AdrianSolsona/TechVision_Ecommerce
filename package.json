@@ -1,4 +1,22 @@
 {
+  "name": "good-smile-def",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdrianSolsona/TechVision_Ecommerce"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdrianSolsona/TechVision_Ecommerce/issues"
+  },
+  "homepage": "https://github.com/AdrianSolsona/TechVision_Ecommerce#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
