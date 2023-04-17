@@ -13,7 +13,7 @@ categoryController.createCategory = async (req, res) => {
             
             name : name,
             highlight : highlight,
-            brand : brand,
+            brand : brand
         }
            // Guardar la informacion
         const categoryCreate = await category.create(newCategory)

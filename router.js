@@ -14,11 +14,11 @@ const buyRoutes = require("./views/buyRoutes")
 router.use('/', authRoutes);
 router.use('/',userRoutes)
 router.use('/',orderRoutes);
-//router.use('/',addressRoutes)
-//router.use('/',categoryRoutes)
+router.use('/',addressRoutes)
+router.use('/',categoryRoutes)
 router.use('/',rolRoutes)
 router.use('/',productRoutes)
-//router.use('/',buyRoutes)
+router.use('/',buyRoutes)
 
 
 
