@@ -61,6 +61,25 @@ productController.getAllProducts = async (req, res) => {
 }
 }
 
+productController.getProduct = async (req, res) => {
+
+    try{
+
+    const productId = req.params.id;
+
+    const productById = await product.findByPk(productId, {
+        attributes: {
+            exclude: [ "category_id","createdAt", "updatedAt"]
+        }
+    })
+
+    return res.json(productById);
+
+    }catch(error){
+        return res.status(500).send(error.message)
+    }
+};
+
 productController.putProduct = async (req, res) =>{
 
     try{
