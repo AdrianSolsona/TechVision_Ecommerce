@@ -1,5 +1,5 @@
 
-const { product } = require("../models");
+const { product, category } = require("../models");
 
 
 const productController = {};
@@ -31,4 +31,33 @@ productController.createProduct = async (req, res) => {
     }
 };
 
+productController.getAllProducts = async (req, res) => {
+
+    try{
+    let productActives = await product.findAll(
+        {
+            include: [
+                category,
+                {
+                    model: category,
+                    attributes: {
+                        exclude: ["id", "createdAt", "updatedAt"]
+                    },
+                },
+            ],
+            attributes: {
+                exclude: ["category_id", "createdAt", "updatedAt"]
+            }
+        })
+
+    if (!productActives){
+        return res.send("User Not Found")
+    }
+
+    return res.json(productActives);
+
+}catch(error){
+    return res.status(500).send(error.message)
+}
+}
 module.exports =  productController
