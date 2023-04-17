@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  product.init({
+product.init({
     category_id: DataTypes.INTEGER,
     name: DataTypes.STRING,
     description: DataTypes.TEXT,

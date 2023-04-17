@@ -2,6 +2,7 @@ const router = require('express').Router();
 
 
 const userRoutes = require("./views/userRoutes")
+const authRoutes = require("./views/authRoutes");
 const orderRoutes = require("./views/orderRoutes")
 const addressRoutes = require("./views/addressRoutes")
 const categoryRoutes = require("./views/categoryRoutes")
@@ -10,14 +11,14 @@ const productRoutes = require("./views/productRoutes")
 const buyRoutes = require("./views/buyRoutes")
 
 
-
+router.use('/', authRoutes);
 router.use('/',userRoutes)
 router.use('/',orderRoutes);
-router.use('/',addressRoutes)
-router.use('/',categoryRoutes)
+//router.use('/',addressRoutes)
+//router.use('/',categoryRoutes)
 router.use('/',rolRoutes)
 router.use('/',productRoutes)
-router.use('/',buyRoutes)
+//router.use('/',buyRoutes)
 
 
 

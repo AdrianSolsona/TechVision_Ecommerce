@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       User.belongsTo(models.rol, {
         foreignKey: 'rol_id'
       });
-      User.hasMany(models.address, {
+      User.hasMany(models.Address, {
         foreignKey: 'user_id'
       });
       User.hasMany(models.order, {
