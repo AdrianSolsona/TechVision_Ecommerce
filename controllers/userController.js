@@ -1,4 +1,4 @@
-const { User, Rol } = require("../models");
+const { User, Rol, Address } = require("../models");
 const bcrypt = require("bcrypt");
 
 const userController = {};
@@ -40,11 +40,11 @@ userController.getAllUsers = async (req, res) => {
     let userActives = await User.findAll(
         {
             include: [
-                Rol,
+                Address,
                 {
-                    model: Rol,
+                    model: Address,
                     attributes: {
-                        exclude: ["id", "createdAt", "updatedAt"]
+                        exclude: ["id","user_id", "createdAt", "updatedAt"]
                     },
                 },
             ],
@@ -62,11 +62,8 @@ userController.getAllUsers = async (req, res) => {
 }catch(error){
     return res.status(500).send(error.message)
 }   
-        
-            
+                    
 }   
-    
-
 //Function to display the user by user id
 
 userController.getUser = async (req, res) => {
@@ -128,22 +125,5 @@ userController.putUser = async (req, res) =>{
     }
 };
 
-//Function for user delete
-
-userController.deleteUser = async(req, res) => {
-
-    try{
-
-        const userId = req.params.id
-    
-        const deleteUser = await User.destroy({where: { id: userId}})
-
-        return res.json(deleteUser);
-
-    }catch(error){
-
-        return res.status(500).send(error.message)
-    }
-};
 
 module.exports =  userController
