@@ -44,7 +44,7 @@ orderController.getAllOrder = async (req, res) => {
                 },
             ],
             attributes: {
-                exclude: ["user_id", "createdAt", "updatedAt"]
+                exclude: ["createdAt", "updatedAt"]
             }
         })
 
@@ -58,6 +58,45 @@ orderController.getAllOrder = async (req, res) => {
     return res.status(500).send(error.message)
 }   
                     
-}   
+}
+
+
+orderController.getOrder = async (req, res) => {
+
+    try{
+
+        const orderId = req.userId;
+
+        const orderById = await order.findAll(
+            {
+                where: 
+                {
+                    user_id: orderId
+                },
+                include: [
+                    User,
+                    {
+                        model: User,
+                        attributes: {
+                            exclude: ["id","rol_id", "password", "createdAt", "updatedAt"]
+                        },
+                    },
+                ],
+                attributes: {
+                    exclude: ["createdAt", "updatedAt"]
+                }
+            })
+
+        if (!orderById){
+            return res.send("User Not Found")
+        }
+
+        return res.json(orderById);
+    
+    }catch(error){
+        return res.status(500).send(error.message)
+    }   
+};
+
 
 module.exports = orderController
