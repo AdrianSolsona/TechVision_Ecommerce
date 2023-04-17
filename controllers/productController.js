@@ -9,16 +9,16 @@ const productController = {};
 productController.createProduct = async (req, res) => {
 
     try {
-        const {name,price,description,render,image,status} = req.body;
+        const {category_id,name,price,description,render,image,status} = req.body;
 
         const newProduct = {
+            category_id : category_id,
             name : name,
             price : price,
             description : description,
             render: render,
             image : image,
             status: status
-    
         }
            // Guardar la informacion
         const productCreate = await product.create(newProduct)
@@ -60,4 +60,47 @@ productController.getAllProducts = async (req, res) => {
     return res.status(500).send(error.message)
 }
 }
+
+productController.putProduct = async (req, res) =>{
+
+    try{
+
+        const productId = req.params.id
+
+        const {category_id,name,price,description,render,image,status} = req.body;
+
+        const updateProduct = await product.update({
+            
+            category_id : category_id,
+            name : name,
+            price : price,
+            description : description,
+            render: render,
+            image : image,
+            status: status }, {where:{id:productId}})
+
+        return res.json(updateProduct)
+
+    }catch(error){
+
+        return res.status(500).send(error.message)
+    }
+}
+
+productController.deleteProduct = async (req, res) => {
+
+    try{
+
+        const productId = req.params.id
+    
+        const deleteProduct = await product.destroy({where: { id: productId}})
+
+        return res.json(deleteProduct);
+
+    }catch(error){
+
+        return res.status(500).send(error.message)
+    }
+};
+
 module.exports =  productController
