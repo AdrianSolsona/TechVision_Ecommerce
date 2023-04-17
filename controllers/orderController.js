@@ -98,5 +98,43 @@ orderController.getOrder = async (req, res) => {
     }   
 };
 
+orderController.putOrder = async (req, res) =>{
+
+    try{
+
+        const orderId = req.params.id
+
+        const {total,status,date} = req.body;
+
+        const updateOrder = await order.update({
+            
+            total : total,
+            status : status,
+            date : date, }, {where:{id:orderId}})
+
+        return res.json(updateOrder)
+
+    }catch(error){
+
+        return res.status(500).send(error.message)
+    }
+}
+
+orderController.deleteOrder = async (req, res) => {
+
+    try{
+
+        const orderId = req.params.id
+    
+        const deleteOrder = await order.destroy({where: { id: orderId}})
+
+        return res.json(deleteOrder);
+
+    }catch(error){
+
+        return res.status(500).send(error.message)
+    }
+};
+
 
 module.exports = orderController

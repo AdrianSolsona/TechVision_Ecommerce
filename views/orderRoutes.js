@@ -6,7 +6,7 @@ const router = require("express").Router();
 router.post("/orders", orderController.createOrder)
 router.get("/orders/all", verifyToken,orderController.getAllOrder)
 router.get("/orders", verifyToken,orderController.getOrder)
-//router.put("/orders", verifyToken,orderController.putOrder)
-//router.delete("/orders", verifyToken, orderController.deleteOrder)*/
+router.put("/orders/:id", verifyToken,orderController.putOrder)
+router.delete("/orders/:id", verifyToken, orderController.deleteOrder)
 
 module.exports = router
