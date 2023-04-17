@@ -75,11 +75,11 @@ userController.getUser = async (req, res) => {
         const user = await User.findByPk(userId,
             {
                 include: [
-                    Rol,
+                    Address,
                     {
-                        model: Rol,
+                        model: Address,
                         attributes: {
-                            exclude: ["id", "createdAt", "updatedAt"]
+                            exclude: ["id","user_id", "createdAt", "updatedAt"]
                         },
                     },
                 ],
