@@ -41,7 +41,7 @@ productController.getAllProducts = async (req, res) => {
                 {
                     model: category,
                     attributes: {
-                        exclude: ["id", "createdAt", "updatedAt"]
+                        exclude: [ "createdAt", "updatedAt"]
                     },
                 },
             ],
