@@ -4,6 +4,6 @@ const router = require("express").Router();
 
 // All available routes for the model Appointment
 router.post("/categories", categoryController.createCategory)
-//router.get("/categories", verifyToken,categoryController.getCategory)
+router.get("/categories/all",categoryController.getAllCategory)
 
 module.exports = router

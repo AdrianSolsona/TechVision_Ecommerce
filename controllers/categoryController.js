@@ -26,4 +26,26 @@ categoryController.createCategory = async (req, res) => {
     }
 };
 
+categoryController.getAllCategory = async (req, res) => {
+
+    try{
+    let allCategory = await category.findAll(
+        {
+            attributes: {
+                exclude: ["createdAt", "updatedAt"]
+            }
+        })
+
+    if (!allCategory){
+        return res.send("Category Not Found")
+    }
+
+    return res.json(allCategory);
+
+}catch(error){
+    return res.status(500).send(error.message)
+}   
+                    
+}
+
 module.exports = categoryController
