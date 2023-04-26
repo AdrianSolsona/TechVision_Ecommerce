@@ -9,10 +9,12 @@ const addressController = {};
 addressController.createAddress = async (req, res) => {
 
     try {
-        const { user_id,name, surname, phone,address, country, city, postcode } = req.body;
+        const { name, surname, phone,address, country, city, postcode } = req.body;
+
+        const newAddressId = req.userId;
 
         const newAddress = {
-            user_id: user_id,
+            user_id: newAddressId,
             name : name,
             surname : surname,
             address : address,
@@ -60,6 +62,27 @@ addressController.getAddress = async (req, res) => {
         return res.status(500).send(error.message)
     }   
 };
+
+addressController.getAddressAll = async (req, res) => {
+
+    try{
+    let AddressAll = await Address.findAll(
+        {
+            attributes: {
+                exclude: ["user_id", "createdAt", "updatedAt"]
+            }
+        })
+
+    if (!AddressAll){
+        return res.send("User Not Found")
+    }
+
+    return res.json(AddressAll);
+
+}catch(error){
+    return res.status(500).send(error.message)
+}
+}
 /*
 addressController.putAddress = async (req, res) =>{
 
