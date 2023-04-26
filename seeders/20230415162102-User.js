@@ -21,7 +21,7 @@ module.exports = {
         email: "alyna@gmail.com",
         createdAt: "2023-02-22 00:00:00", 
         updatedAt: "2023-02-22 00:00:00", 
-        rol_id: 2},
+        rol_id: 1},
       {id: 2,
         password : encryptedPassword2, 
         email: "ignacio@gmail.com",
