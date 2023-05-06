@@ -8,5 +8,6 @@ router.get("/orders/all", verifyToken,orderController.getAllOrder)
 router.get("/orders", verifyToken,orderController.getOrder)
 router.put("/orders/:id", verifyToken,orderController.putOrder)
 router.delete("/orders/:id", verifyToken, orderController.deleteOrder)
+router.put("/orders/buys/:id", verifyToken,orderController.updateOrderStatus)
 
 module.exports = router
