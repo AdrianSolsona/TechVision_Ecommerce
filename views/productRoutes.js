@@ -5,7 +5,7 @@ const router = require("express").Router();
 // All available routes for the model Appointment
 router.post("/products", verifyToken,productController.createProduct)
 router.get("/products/all",productController.getAllProducts)
-router.get("/products/:id", verifyToken,productController.getProduct)
+router.get("/products/:id", productController.getProduct)
 router.put("/products/:id", verifyToken,productController.putProduct)
 router.delete("/products/:id", verifyToken,productController.deleteProduct)
 
