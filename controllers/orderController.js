@@ -8,7 +8,7 @@ const orderController = {};
 orderController.createOrder = async (req, res) => {
 
     try {
-        const { user_id, total, date, status } = req.body;
+        const { user_id, total, status, date } = req.body;
 
         const newOrder = {
             user_id: user_id,
@@ -135,6 +135,24 @@ orderController.deleteOrder = async (req, res) => {
         return res.status(500).send(error.message)
     }
 };
+
+orderController.updateOrderStatus = async (req, res) => {
+    try {
+      const orderId = req.params.id;
+  
+      const updatedOrder = await order.update(
+        { status: "complete" },
+        { where: { id: orderId } }
+      );
+  
+      res.status(200).json(updatedOrder);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send("Error updating order status");
+    }
+  };
+
+
 
 
 module.exports = orderController
