@@ -9,5 +9,5 @@ router.get("/orders", verifyToken,orderController.getOrder)
 router.put("/orders/:id", verifyToken,orderController.putOrder)
 router.delete("/orders/:id", verifyToken, orderController.deleteOrder)
 router.put("/orders/buys/:id", verifyToken,orderController.updateOrderStatus)
-
+router.post("/orders/create", verifyToken,orderController.createOrderBuy)
 module.exports = router
